@@ -1,0 +1,35 @@
+class EzConfig
+  PRODUCTION_REGEX  = /^production/
+
+  def initialize(opt)
+    @env              = opt[:env].to_s
+    @path             = opt[:path]
+    @production_regex = opt[:production_regex] || PRODUCTION_REGEX
+  end
+
+  def [](k)
+    config[k]
+  end
+
+  protected
+  def files
+    Dir.glob config_path
+  end
+
+  def default_env
+    env =~ @production_regex ? 'production' : 'non_production'
+  end
+
+  def config
+    @config ||= files.inject({}) do |config, file|
+      key   = File.basename file, 'yml'
+      yaml  = YAML.load_file file
+      val   = yaml[env] || yaml[default_env]
+
+      raise NoConfigForEnv, "Environment #{env} not found in #{file}" unless val
+
+      config[key] = val
+      config
+    end
+  end
+end
