@@ -38,7 +38,7 @@ ruby project, and it is not rails specific.
 })
 ```
 
-To configure a new service called 'new_service', you will create a YML file in
+To configure a new service called `new_service`, you will create a YML file in
 your config direcotry. The file has to have an extension of `.yml`. The name of
 the file will become the config key. This file has to contain at least two
 environments, `production` and `non_production`:
@@ -67,7 +67,9 @@ file, it will load the default `production` env. This simplifies configuration f
 projects that may have many a dozen different environments.
 
 Lastly, if your cretiria in recognizing `production` and `production` environments differs
-from the default, you can pass in `:production_regex` to specify your own cretieria 
+from the default, you can pass in `:production_regex` to specify your own cretieria.
+The example below determins whether to use `production` or `non_production` configurations
+by checking if current environment ends with `-prod`
 
 ```ruby
 @config = EzConfig.new({
