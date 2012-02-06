@@ -1,0 +1,11 @@
+non_production:
+  foo_path: /path/to/dev
+
+production:
+  foo_path: /path/to/prod
+
+production_west_coast:
+  foo_path: /path/to/prod_west
+
+production_east_coast:
+  foo_path: /path/to/prod_east

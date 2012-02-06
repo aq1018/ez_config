@@ -1,4 +1,6 @@
 class EzConfig
+  class NoConfigForEnv < StandardError; end
+
   PRODUCTION_REGEX  = /^production/
 
   def initialize(opt)
@@ -11,9 +13,8 @@ class EzConfig
     config[k]
   end
 
-  protected
   def files
-    Dir.glob config_path
+    Dir.glob File.join(config_path, '*.yml')
   end
 
   def default_env
