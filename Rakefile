@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "ez_config"
   gem.homepage = "http://github.com/aq1018/ez_config"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{load yml files from specified path and easily access your config data.}
+  gem.description = %Q{ez_config loads yml files from specified path and allows you to easily access your config data.}
   gem.email = "aq1018@gmail.com"
   gem.authors = ["Aaron Qian"]
   # dependencies defined in Gemfile
