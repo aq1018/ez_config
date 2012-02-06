@@ -5,24 +5,25 @@
 
 Gem::Specification.new do |s|
   s.name = "ez_config"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Qian"]
   s.date = "2012-02-06"
-  s.description = "TODO: longer description of your gem"
+  s.description = "ez_config loads yml files from specified path and allows you to easily access your config data."
   s.email = "aq1018@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
     "Gemfile",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
+    "ez_config.gemspec",
     "lib/ez_config.rb",
     "spec/config/bar.yml",
     "spec/config/foo.yml",
@@ -33,7 +34,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.10"
-  s.summary = "TODO: one-line summary of your gem"
+  s.summary = "load yml files from specified path and easily access your config data."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
