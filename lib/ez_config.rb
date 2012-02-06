@@ -14,20 +14,20 @@ class EzConfig
   end
 
   def files
-    Dir.glob File.join(config_path, '*.yml')
+    Dir.glob File.join(@path, '*.yml')
   end
 
   def default_env
-    env =~ @production_regex ? 'production' : 'non_production'
+    @env =~ @production_regex ? 'production' : 'non_production'
   end
 
   def config
     @config ||= files.inject({}) do |config, file|
-      key   = File.basename file, 'yml'
+      key   = File.basename file, '.yml'
       yaml  = YAML.load_file file
-      val   = yaml[env] || yaml[default_env]
+      val   = yaml[@env] || yaml[default_env]
 
-      raise NoConfigForEnv, "Environment #{env} not found in #{file}" unless val
+      raise NoConfigForEnv, "Environment #{@env} not found in #{file}" unless val
 
       config[key] = val
       config

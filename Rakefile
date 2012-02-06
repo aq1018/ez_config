@@ -25,19 +25,25 @@ Jeweler::Tasks.new do |gem|
 end
 Jeweler::RubygemsDotOrgTasks.new
 
-require 'rake/testtask'
-Rake::TestTask.new(:spec) do |spec|
-  spec.libs << 'lib' << 'spec'
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.verbose = true
+require 'rspec/core'
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = FileList['spec/**/*_spec.rb']
+  spec.rspec_opts = "--color --format progress"
 end
 
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |spec|
-  spec.libs << 'spec'
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.verbose = true
-  spec.rcov_opts << '--exclude "gems/*"'
+if RUBY_VERSION =~ /^1\.9/
+  desc "Code coverage detail"
+  task :simplecov do
+    ENV['COVERAGE'] = "true"
+    Rake::Task[:spec].execute
+  end
+elsif  RUBY_VERSION =~ /^1\.8/
+  RSpec::Core::RakeTask.new(:rcov) do |spec|
+    spec.pattern = 'spec/**/*_spec.rb'
+    spec.rcov = true
+    spec.rcov_opts = "--exclude ~\/.rvm,spec"
+  end
 end
 
 task :default => :spec
