@@ -3,14 +3,25 @@ class EzConfig
 
   PRODUCTION_REGEX  = /^production/
 
-  def initialize(opt)
-    @env              = opt[:env].to_s
-    @path             = opt[:path]
+  class << self
+    def configure(opt={})
+      @instance = new(opt)
+    end
+
+    def [](k)
+      @instance ||= new
+      @instance[k]
+    end
+  end
+
+  def initialize(opt={})
+    @env              = opt[:env].to_s || ENV['RACK_ENV'] || ENV['RAILS_ENV']
+    @path             = opt[:path] || "#{Dir.pwd}/config/app_config"
     @production_regex = opt[:production_regex] || PRODUCTION_REGEX
   end
 
   def [](k)
-    config[k]
+    to_hash[k]
   end
 
   def files
@@ -31,6 +42,8 @@ class EzConfig
 
       config[key] = val
       config
-    end
+    end.freeze
   end
+
+  alias :to_hash :config
 end
