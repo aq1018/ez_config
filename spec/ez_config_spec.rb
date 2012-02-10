@@ -28,4 +28,9 @@ describe EzConfig do
     config = ez_config(:production_west_coast)
     config['foo']['foo_path'].should == '/path/to/prod_west'
   end
+
+  it "should have singleton configure options" do
+    EzConfig.configure :env => :test, :path => File.join(File.dirname(__FILE__), 'config')
+    EzConfig['foo']['foo_path'].should == '/path/to/dev'
+  end
 end
