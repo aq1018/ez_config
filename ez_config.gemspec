@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Qian"]
-  s.date = "2012-02-06"
+  s.date = "2012-02-10"
   s.description = "ez_config loads yml files from specified path and allows you to easily access your config data."
   s.email = "aq1018@gmail.com"
   s.extra_rdoc_files = [
