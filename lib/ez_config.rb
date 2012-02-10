@@ -4,13 +4,20 @@ class EzConfig
   PRODUCTION_REGEX  = /^production/
 
   class << self
-    def configure(opt={})
-      @instance = new(opt)
+    def configure(opt)
+      @opt = opt
+    end
+
+    def instance
+      @instance ||= new (@opt || {})
     end
 
     def [](k)
-      @instance ||= new
-      @instance[k]
+      instance[k]
+    end
+
+    def to_hash
+      instance.to_hash
     end
   end
 

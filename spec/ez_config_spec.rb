@@ -33,4 +33,9 @@ describe EzConfig do
     EzConfig.configure :env => :test, :path => File.join(File.dirname(__FILE__), 'config')
     EzConfig['foo']['foo_path'].should == '/path/to/dev'
   end
+
+  it "should have to_hash" do
+    EzConfig.configure :env => :test, :path => File.join(File.dirname(__FILE__), 'config')
+    EzConfig.to_hash.is_a?(Hash).should be_true
+  end
 end
