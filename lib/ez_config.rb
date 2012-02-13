@@ -49,7 +49,7 @@ class EzConfig
 
       config[key] = val
       config
-    end.freeze
+    end
   end
 
   alias :to_hash :config
