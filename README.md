@@ -93,6 +93,6 @@ Contributing to ez_config
 Copyright
 ---------
 
-Copyright (c) 2012 Aaron Qian. See LICENSE.txt for
+Copyright (c) 2012 Aaron Qian, Adam Avilla. See LICENSE.txt for
 further details.
 

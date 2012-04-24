@@ -20,7 +20,7 @@ Jeweler::Tasks.new do |gem|
   gem.summary = %Q{load yml files from specified path and easily access your config data.}
   gem.description = %Q{ez_config loads yml files from specified path and allows you to easily access your config data.}
   gem.email = "aq1018@gmail.com"
-  gem.authors = ["Aaron Qian"]
+  gem.authors = ["Aaron Qian", 'Adam Avilla']
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
